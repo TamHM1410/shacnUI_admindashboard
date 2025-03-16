@@ -39,10 +39,13 @@ const useExperts = () => {
           setFetching();
         },
         onError: (error) => {
-        debugger
+
+          invalidateQueries({
+            queryKey: ["experts"],
+          });
 
           setFetched();
-          toast.error("An error occurred");
+          // toast.error("An error occurred");
           onClose();
         },
         onSuccess: () => {
@@ -83,8 +86,11 @@ const useExperts = () => {
         onError: (error) => {
           
           setFetched();
+          invalidateQueries({
+            queryKey: ["experts"],
+          });
 
-          toast.error("An error occurred");
+          // toast.error("An error occurred");
           onClose();
         },
         onSuccess: () => {
